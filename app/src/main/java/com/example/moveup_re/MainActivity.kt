@@ -15,8 +15,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material3.Button
-import androidx.compose.material3.ElevatedButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -27,6 +31,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.coerceAtLeast
@@ -119,12 +124,32 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
                         fontWeight = FontWeight.ExtraBold
                     )
                 )
+                if(expanded)
+                    Text(
+                        text = ("Composem ipsum color sit lazy, " +
+                                "padding theme elit, sed do bouncy. ").repeat(4)
+                    )
             }
+            /*
             ElevatedButton(
                 onClick = { expanded = !expanded },
                 modifier = Modifier.weight(1f)
             ) {
-                Text(if(expanded) "Show less" else "Show more")
+                Text(if(expanded) R.string.show_less.toString() else R.string.show_more.toString())
+            }
+             */
+            IconButton(
+                onClick = { expanded = !expanded }
+            ){
+                Icon(
+                    imageVector = if(expanded) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
+                    contentDescription = if(expanded){
+                        stringResource(R.string.show_less)
+                    }
+                    else{
+                        stringResource(R.string.show_more)
+                    }
+                )
             }
         }
     }
@@ -140,7 +165,7 @@ fun OnboardingPreview() {
 }
 */
 
-@Preview(showBackground = true, widthDp = 320)
+@Preview(showBackground = true, widthDp = 400)
 @Preview(
     showBackground = true,
     widthDp = 320,
@@ -154,7 +179,7 @@ fun GreetingsPreview() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 320)
+@Preview(showBackground = true, widthDp = 400)
 @Composable
 fun MyAppPreview() {
     MoveUP_reTheme {
