@@ -52,18 +52,26 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MyApp(modifier: Modifier = Modifier){
-    var shouldShowOnboarding by rememberSaveable { mutableStateOf(true) }
+    var nowPage by rememberSaveable { mutableStateOf("home") }
 
     Surface(modifier) {
-        if(shouldShowOnboarding)
-            OnboardingScreen(onContinueClicked = { shouldShowOnboarding = false })
+        if(nowPage == "home")
+            HomeScreen(onContinueClicked = { nowPage = "false" })
+        else if(nowPage == "workOut")
+            workOutScreen()
+        else if(nowPage == "stepTracker")
+            stepTrackerScreen()
+        else if(nowPage == "dailyReport")
+            dailyReportScreen()
+        else if(nowPage == "monthlyReport")
+            monthlyReportScreen()
         else
             Greetings()
     }
 }
 
 @Composable
-fun OnboardingScreen(
+fun HomeScreen(
     onContinueClicked: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -80,6 +88,26 @@ fun OnboardingScreen(
             Text("Continue")
         }
     }
+}
+
+@Composable
+fun workOutScreen(){
+
+}
+
+@Composable
+fun stepTrackerScreen(){
+
+}
+
+@Composable
+fun dailyReportScreen(){
+
+}
+
+@Composable
+fun monthlyReportScreen(){
+
 }
 
 @Composable
