@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
     id("com.google.dagger.hilt.android")
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
@@ -51,8 +53,10 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     // compose implementation
-    //noinspection UseTomlInstead
+    // noinspection UseTomlInstead
     implementation("androidx.compose.material:material-icons-extended")
+    // permission
+    implementation(libs.accompanist.permissions.v0373)
     // Camera
     implementation (libs.androidx.camera.core)
     implementation (libs.androidx.camera.camera2)
@@ -61,8 +65,10 @@ dependencies {
     implementation (libs.androidx.camera.view)
     implementation (libs.androidx.camera.extensions)
     // Singleton
+    implementation(libs.androidx.runtime.livedata)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

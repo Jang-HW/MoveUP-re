@@ -1,4 +1,4 @@
-package com.example.moveup_re.screen
+package com.example.moveup_re.view
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.core.Spring

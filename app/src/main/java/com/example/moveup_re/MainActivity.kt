@@ -1,6 +1,5 @@
 package com.example.moveup_re
 
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,12 +18,14 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.moveup_re.screen.Greetings
-import com.example.moveup_re.screen.WorkOutScreen
+import com.example.moveup_re.view.Greetings
+import com.example.moveup_re.view.WorkOutView
 import com.example.moveup_re.ui.theme.MoveUP_reTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,21 +44,19 @@ fun MyApp(modifier: Modifier = Modifier){
 
     Surface(modifier) {
         when (nowPage) {
-            "home" -> HomeScreen(onContinueClicked = { nowPage = "false" })
-            "workOut" -> WorkOutScreen(
-                onImageCaptureClick = {},
-                onVideoCaptureClick = {}
-            )
-            "stepTracker" -> StepTrackerScreen()
-            "dailyReport" -> DailyReportScreen()
-            "monthlyReport" -> MonthlyReportScreen()
+            "home" -> HomeView(onContinueClicked = { nowPage = "workOut" })
+            "workOut" -> WorkOutView(
+                onBackClicked = { nowPage = "home" })
+            "stepTracker" -> StepTrackerView()
+            "dailyReport" -> DailyReportView()
+            "monthlyReport" -> MonthlyReportView()
             else -> Greetings()
         }
     }
 }
 
 @Composable
-fun HomeScreen(
+fun HomeView(
     onContinueClicked: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -78,16 +77,16 @@ fun HomeScreen(
 
 
 @Composable
-fun StepTrackerScreen(){
+fun StepTrackerView(){
 
 }
 
 @Composable
-fun DailyReportScreen(){
+fun DailyReportView(){
 
 }
 
 @Composable
-fun MonthlyReportScreen(){
+fun MonthlyReportView(){
 
 }

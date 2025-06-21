@@ -5,4 +5,6 @@
     <string name="take_photo">Take Photo</string>
     <string name="start_capture">Start Capture</string>
     <string name="stop_capture">Stop Capture</string>
+    <string name="pop_screen">Pop Screen</string>
+    <string name="not_available_camera">Not Available Camera</string>
 </resources>
